@@ -7,7 +7,7 @@ Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 First of all you need a sonarqube server. If you haven't one, run this code;
 
 ```
-docker run --rm -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:6.7.1
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:6.7.1
 ```
 
 And then you need .Net Core project. If you haven't one, run this codes;
@@ -24,7 +24,7 @@ dotnet sln ConsoleApplication1.sln add ConsoleApplication1.csproj
 Take login token from sonarqube server, change working directory to project directory and run this code;
 
 ```
-docker run -t -i -v $(pwd):/project \
+docker run --name dotnet-scanner -it --rm -v $(pwd):/project \
   -e PROJECT_KEY=ConsoleApplication1 \
   -e PROJECT_NAME=ConsoleApplication1 \
   -e PROJECT_VERSION=1.0 \
