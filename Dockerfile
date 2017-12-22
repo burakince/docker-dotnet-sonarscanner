@@ -5,7 +5,8 @@ MAINTAINER Burak Ince <burak.ince@linux.org.tr>
 ENV SONAR_SCANNER_MSBUILD_VERSION=4.0.2.892 \
     SONAR_SCANNER_VERSION=3.0.3.778 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
-    DOTNET_PROJECT_DIR=/project
+    DOTNET_PROJECT_DIR=/project \
+    DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 RUN set -x \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
@@ -28,22 +29,17 @@ RUN set -x \
   && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie main" > /etc/apt/sources.list.d/dotnetdev.list' \
   && apt-get update \
   && apt-get install dotnet-sdk-2.0.0 -y \
-  && wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/$SONAR_SCANNER_MSBUILD_VERSION/sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION.zip -O /opt/sonar-scanner-msbuild.zip \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/$SONAR_SCANNER_MSBUILD_VERSION/sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION.zip -O /opt/sonar-scanner-msbuild.zip \
   && mkdir -p $SONAR_SCANNER_MSBUILD_HOME \
   && mkdir -p $DOTNET_PROJECT_DIR \
   && unzip /opt/sonar-scanner-msbuild.zip -d $SONAR_SCANNER_MSBUILD_HOME \
   && rm /opt/sonar-scanner-msbuild.zip \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/MSBuild.SonarQube.Runner.exe \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/SonarQube.Scanner.MSBuild.exe \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-runner \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-runner.bat \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner-debug \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner-debug.bat \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner.bat \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/lib/sonar-scanner-cli-$SONAR_SCANNER_VERSION.jar \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/*.exe \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/**/bin/* \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/**/lib/*.jar
 
 ENV PATH="$SONAR_SCANNER_MSBUILD_HOME:$SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin:${PATH}"
 
