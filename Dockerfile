@@ -3,6 +3,7 @@ FROM java:openjdk-8-jre
 MAINTAINER Burak Ince <burak.ince@linux.org.tr>
 
 ENV SONAR_SCANNER_MSBUILD_VERSION=4.0.2.892 \
+    SONAR_SCANNER_VERSION=3.0.3.778 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
     DOTNET_PROJECT_DIR=/project
 
@@ -34,19 +35,19 @@ RUN set -x \
   && rm /opt/sonar-scanner-msbuild.zip \
   && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/MSBuild.SonarQube.Runner.exe \
   && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/SonarQube.Scanner.MSBuild.exe \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/sonar-runner \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/sonar-runner.bat \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/sonar-scanner \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/sonar-scanner-debug \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/sonar-scanner-debug.bat \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/sonar-scanner.bat \
-  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/lib/sonar-scanner-cli-3.0.3.778.jar \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-runner \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-runner.bat \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner-debug \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner-debug.bat \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/sonar-scanner.bat \
+  && chmod 775 $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/lib/sonar-scanner-cli-$SONAR_SCANNER_VERSION.jar \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-ENV PATH="$SONAR_SCANNER_MSBUILD_HOME:$SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin:${PATH}"
+ENV PATH="$SONAR_SCANNER_MSBUILD_HOME:$SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin:${PATH}"
 
-COPY run.sh $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-3.0.3.778/bin/
+COPY run.sh $SONAR_SCANNER_MSBUILD_HOME/sonar-scanner-$SONAR_SCANNER_VERSION/bin/
 
 VOLUME $DOTNET_PROJECT_DIR
 WORKDIR $DOTNET_PROJECT_DIR
