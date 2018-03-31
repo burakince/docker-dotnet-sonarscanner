@@ -2,8 +2,9 @@ FROM java:openjdk-8-jre
 
 MAINTAINER Burak Ince <burak.ince@linux.org.tr>
 
-ENV SONAR_SCANNER_MSBUILD_VERSION=4.0.2.892 \
-    SONAR_SCANNER_VERSION=3.0.3.778 \
+ENV SONAR_SCANNER_MSBUILD_VERSION=4.1.1.1164 \
+    SONAR_SCANNER_VERSION=3.1.0.1141 \
+    DOTNET_SDK_VERSION=2.1.101 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
     DOTNET_PROJECT_DIR=/project \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true \
@@ -29,11 +30,11 @@ RUN set -x \
   && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
   && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie main" > /etc/apt/sources.list.d/dotnetdev.list' \
   && apt-get update \
-  && apt-get install dotnet-sdk-2.0.0 -y \
+  && apt-get install dotnet-sdk-$DOTNET_SDK_VERSION -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/$SONAR_SCANNER_MSBUILD_VERSION/sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION.zip -O /opt/sonar-scanner-msbuild.zip \
+RUN wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/$SONAR_SCANNER_MSBUILD_VERSION/sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION-net46.zip -O /opt/sonar-scanner-msbuild.zip \
   && mkdir -p $SONAR_SCANNER_MSBUILD_HOME \
   && mkdir -p $DOTNET_PROJECT_DIR \
   && unzip /opt/sonar-scanner-msbuild.zip -d $SONAR_SCANNER_MSBUILD_HOME \
