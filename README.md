@@ -29,12 +29,6 @@ First of all you need a sonarqube server. If you haven't one, run this code;
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:6.7.1
 ```
 
-Or try this,
-
-```
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 burakince/docker-sonarqube:6.7.1
-```
-
 And then you need .Net Core project. If you haven't one, run this codes;
 
 ```
