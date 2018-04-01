@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jre
+FROM openjdk:8u162-jre-stretch
 
 MAINTAINER Burak Ince <burak.ince@linux.org.tr>
 
@@ -12,7 +12,7 @@ ENV SONAR_SCANNER_MSBUILD_VERSION=4.1.1.1164 \
 
 RUN set -x \
   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF \
-  && echo "deb http://download.mono-project.com/repo/debian jessie main" | tee /etc/apt/sources.list.d/mono-official.list \
+  && echo "deb http://download.mono-project.com/repo/debian stable-stretch main" | tee /etc/apt/sources.list.d/mono-official-stable.list \
   && apt-get update \
   && apt-get install \
     curl \
@@ -28,7 +28,7 @@ RUN set -x \
     -y \
   && curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
   && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
-  && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie main" > /etc/apt/sources.list.d/dotnetdev.list' \
+  && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" > /etc/apt/sources.list.d/dotnetdev.list' \
   && apt-get update \
   && apt-get install dotnet-sdk-$DOTNET_SDK_VERSION -y \
   && apt-get clean \

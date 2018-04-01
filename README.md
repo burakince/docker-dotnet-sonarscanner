@@ -2,6 +2,25 @@
 
 Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 
+## This Image Using
+
+|                | Name          | Version       |
+| -------------- |:-------------:| -------------:|
+| OS             | Debian        |   Stretch (9) |
+| Java           | OpenJDK       |  8 Update 162 |
+| .NET Framework | Mono          | Stable 5.10.0 |
+| .NET SDK       | .NET Core SDK |       2.1.101 |
+| Sonar Scanner  | CLI           |    3.1.0.1141 |
+| Sonar Scanner  | MS Build      |    4.1.1.1164 |
+
+## Latest Versions
+
+[Latest Debian](https://www.debian.org/releases/stable/)
+[Latest OpenJDK](https://hub.docker.com/r/library/openjdk/tags/)
+[Latest Mono](https://www.mono-project.com/download/stable/#download-lin-debian)
+[Latest .Net SDK](https://www.microsoft.com/net/download/all)
+[Latest Sonar Scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+MSBuild)
+
 ## Using Example
 
 First of all you need a sonarqube server. If you haven't one, run this code;
