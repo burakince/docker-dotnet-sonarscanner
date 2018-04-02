@@ -1,6 +1,6 @@
 FROM openjdk:8u162-jre-stretch
 
-MAINTAINER Burak Ince <burak.ince@linux.org.tr>
+LABEL maintainer="Burak Ince <burak.ince@linux.org.tr>"
 
 ENV SONAR_SCANNER_MSBUILD_VERSION=4.1.1.1164 \
     SONAR_SCANNER_VERSION=3.1.0.1141 \
