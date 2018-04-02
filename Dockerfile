@@ -5,6 +5,7 @@ LABEL maintainer="Burak Ince <burak.ince@linux.org.tr>"
 ENV SONAR_SCANNER_MSBUILD_VERSION=4.1.1.1164 \
     SONAR_SCANNER_VERSION=3.1.0.1141 \
     DOTNET_SDK_VERSION=2.1.101 \
+    MONO_DEBIAN_VERSION=5.10.1.20-0xamarin1+debian9b1 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
     DOTNET_PROJECT_DIR=/project \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true \
@@ -19,8 +20,8 @@ RUN set -x \
     libunwind8 \
     gettext \
     apt-transport-https \
-    mono-complete \
-    ca-certificates-mono \
+    mono-complete="$MONO_DEBIAN_VERSION" \
+    ca-certificates-mono="$MONO_DEBIAN_VERSION" \
     referenceassemblies-pcl \
     mono-xsp4 \
     wget \
