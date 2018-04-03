@@ -2,4 +2,4 @@
 .gitignore
 Dockerfile
 LICENSE
-READMME.md
+*.md
