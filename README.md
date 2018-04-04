@@ -2,6 +2,8 @@
 
 Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/burakince/docker-dotnet-sonarscanner.svg)](https://hub.docker.com/r/burakince/docker-dotnet-sonarscanner/) [![Docker Automated build](https://img.shields.io/docker/automated/burakince/docker-dotnet-sonarscanner.svg)](https://hub.docker.com/r/burakince/docker-dotnet-sonarscanner/) [![Docker Build Status](https://img.shields.io/docker/build/burakince/docker-dotnet-sonarscanner.svg)](https://hub.docker.com/r/burakince/docker-dotnet-sonarscanner/)
+
 ## This Image Using
 
 |                | Name          | Version       |
@@ -12,6 +14,8 @@ Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 | .NET SDK       | .NET Core SDK |       2.1.103 |
 | Sonar Scanner  | CLI           |    3.1.0.1141 |
 | Sonar Scanner  | MS Build      |    4.1.1.1164 |
+
+Please check [Releases Page](https://github.com/burakince/docker-dotnet-sonarscanner/releases) for details.
 
 ## Latest Versions
 
@@ -26,7 +30,7 @@ Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 First of all you need a sonarqube server. If you haven't one, run this code;
 
 ```
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:6.7.1
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
 ```
 
 And then you need .Net Core project. If you haven't one, run this codes;
