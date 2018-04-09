@@ -4,7 +4,7 @@ LABEL maintainer="Burak Ince <burak.ince@linux.org.tr>"
 
 ENV SONAR_SCANNER_MSBUILD_VERSION=4.1.1.1164 \
     SONAR_SCANNER_VERSION=3.1.0.1141 \
-    DOTNET_SDK_VERSION=2.1.103 \
+    DOTNET_SDK_VERSION=2.1.104 \
     MONO_DEBIAN_VERSION=5.10.1.20-0xamarin1+debian9b1 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
     DOTNET_PROJECT_DIR=/project \
