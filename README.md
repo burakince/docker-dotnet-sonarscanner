@@ -13,7 +13,7 @@ Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 | .NET Framework | Mono          | Stable 5.10.1.47 |
 | .NET SDK       | .NET Core SDK |          2.1.105 |
 | Sonar Scanner  | CLI           |       3.1.0.1141 |
-| Sonar Scanner  | MS Build      |       4.1.1.1164 |
+| Sonar Scanner  | MS Build      |       4.2.0.1214 |
 
 Please check [Releases Page](https://github.com/burakince/docker-dotnet-sonarscanner/releases) for details.
 
