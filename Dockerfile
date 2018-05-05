@@ -1,4 +1,4 @@
-FROM openjdk:8u162-jre-stretch
+FROM openjdk:8u171-jre-stretch
 
 LABEL maintainer="Burak Ince <burak.ince@linux.org.tr>"
 
