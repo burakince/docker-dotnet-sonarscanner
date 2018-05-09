@@ -4,7 +4,7 @@ LABEL maintainer="Burak Ince <burak.ince@linux.org.tr>"
 
 ENV SONAR_SCANNER_MSBUILD_VERSION=4.2.0.1214 \
     SONAR_SCANNER_VERSION=3.1.0.1141 \
-    DOTNET_SDK_VERSION=2.1.105 \
+    DOTNET_SDK_VERSION=2.1.200 \
     MONO_DEBIAN_VERSION=5.10.1.47-0xamarin4+debian9b1 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
     DOTNET_PROJECT_DIR=/project \
@@ -29,7 +29,7 @@ RUN set -x \
     -y \
   && curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
   && mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
-  && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" > /etc/apt/sources.list.d/dotnetdev.list' \
+  && wget -q https://packages.microsoft.com/config/debian/9/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list \
   && apt-get update \
   && apt-get install dotnet-sdk-$DOTNET_SDK_VERSION -y \
   && apt-get clean \
