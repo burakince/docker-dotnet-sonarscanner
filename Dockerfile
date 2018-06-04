@@ -2,8 +2,8 @@ FROM openjdk:8u171-jre-stretch
 
 LABEL maintainer="Burak Ince <burak.ince@linux.org.tr>"
 
-ENV SONAR_SCANNER_MSBUILD_VERSION=4.2.0.1214 \
-    SONAR_SCANNER_VERSION=3.1.0.1141 \
+ENV SONAR_SCANNER_MSBUILD_VERSION=4.3.0.1333 \
+    SONAR_SCANNER_VERSION=3.2.0.1227 \
     DOTNET_SDK_VERSION=2.1 \
     MONO_DEBIAN_VERSION=5.12.0.226-0xamarin3+debian9b1 \
     SONAR_SCANNER_MSBUILD_HOME=/opt/sonar-scanner-msbuild \
@@ -34,7 +34,6 @@ RUN set -x \
   && apt-get install dotnet-sdk-$DOTNET_SDK_VERSION -y \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
-
 RUN wget https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/$SONAR_SCANNER_MSBUILD_VERSION/sonar-scanner-msbuild-$SONAR_SCANNER_MSBUILD_VERSION-net46.zip -O /opt/sonar-scanner-msbuild.zip \
   && mkdir -p $SONAR_SCANNER_MSBUILD_HOME \
   && mkdir -p $DOTNET_PROJECT_DIR \
