@@ -11,9 +11,9 @@ Sonar Scanner MsBuild Dockerfile for .Net Core Projects
 | OS             | Debian        |   Stretch (9) |
 | Java           | OpenJDK       |  8 Update 171 |
 | .NET Framework | Mono          |    5.12.0.226 |
-| .NET SDK       | .NET Core SDK | 2.1 (2.1.300) |
+| .NET SDK       | .NET Core SDK | 2.1 (2.1.301) |
 | Sonar Scanner  | CLI           |    3.2.0.1227 |
-| Sonar Scanner  | MS Build      |    4.3.0.1333 |
+| Sonar Scanner  | MS Build      |    4.3.1.1372 |
 
 Please check [Releases Page](https://github.com/burakince/docker-dotnet-sonarscanner/releases) for details.
 
