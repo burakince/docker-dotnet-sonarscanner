@@ -50,7 +50,20 @@ Take login token from sonarqube server, change working directory to project dire
 docker run --name dotnet-scanner -it --rm -v $(pwd):/project \
   -e PROJECT_KEY=ConsoleApplication1 \
   -e PROJECT_NAME=ConsoleApplication1 \
+  -e PROJECT_VERSION=1.0 \  
+  -e HOST=http://localhost:9000 \
+  -e LOGIN_KEY=CHANGE_THIS_ONE \
+  burakince/docker-dotnet-sonarscanner
+```
+
+More than one project or solution file in working directory
+
+```
+docker run --name dotnet-scanner -it --rm -v $(pwd):/project \
+  -e PROJECT_KEY=ConsoleApplication1 \
+  -e PROJECT_NAME=ConsoleApplication1 \
   -e PROJECT_VERSION=1.0 \
+  -e PROJECT_FILE=ConsoleApplication1.sln \
   -e HOST=http://localhost:9000 \
   -e LOGIN_KEY=CHANGE_THIS_ONE \
   burakince/docker-dotnet-sonarscanner
